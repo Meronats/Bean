@@ -1,0 +1,47 @@
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ethiopian Coffee Recommender</title>
+</head>
+<body>
+    <h1>Ethiopian Coffee Recommender</h1>
+    <form action="/result" method="POST">
+        <label for="flavor">Preferred Flavor:</label>
+        <input type="text" name="flavor" id="flavor"><br>
+
+        <label for="roast_level">Preferred Roast Level:</label>
+        <input type="text" name="roast_level" id="roast_level"><br>
+
+        <label for="brewing_method">Preferred Brewing Method:</label>
+        <input type="text" name="brewing_method" id="brewing_method"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+Result.html 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Ethiopian Coffee</title>
+</head>
+<body>
+    <h1>Recommended Ethiopian Coffee</h1>
+    {% if recommended_coffees %}
+        <ul>
+        {% for coffee in recommended_coffees %}
+            <li>Name: {{ coffee.name }}</li>
+            <li>Flavor: {{ coffee.flavor }}</li>
+            <li>Roast Level: {{ coffee.roast_level }}</li>
+            <li>Brewing Method: {{ coffee.brewing_method }}</li>
+            <br>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Ethiopian coffee matches your preferences.</p>
+    {% endif %}
+</body>
+</html>
